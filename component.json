@@ -1,0 +1,152 @@
+{
+    "title": "Azure SQL Database disaster recovery configurations",
+    "description": "Provides create, read, update, delete, and failover functionality for Azure SQL Database disaster recovery configurations.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/sql-disasterRecoveryConfigurations/2014-04-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "DisasterRecoveryConfigurations_List": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_List.js",
+            "title": "Lists a server's disaster recovery configuration.",
+            "description": "Lists a server's disaster recovery configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisasterRecoveryConfigurations_Delete": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_Delete.js",
+            "title": "Deletes a disaster recovery configuration.",
+            "description": "Deletes a disaster recovery configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisasterRecoveryConfigurations_Get": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_Get.js",
+            "title": "Gets a disaster recovery configuration.",
+            "description": "Gets a disaster recovery configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisasterRecoveryConfigurations_CreateOrUpdate": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_CreateOrUpdate.js",
+            "title": "Creates or updates a disaster recovery configuration.",
+            "description": "Creates or updates a disaster recovery configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisasterRecoveryConfigurations_Failover": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_Failover.js",
+            "title": "Fails over from the current primary server to this server.",
+            "description": "Fails over from the current primary server to this server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_Failover.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisasterRecoveryConfigurations_FailoverAllowDataLoss": {
+            "main": "./lib/actions/DisasterRecoveryConfigurations_FailoverAllowDataLoss.js",
+            "title": "Fails over from the current primary server to this server. This operation might result in data loss.",
+            "description": "Fails over from the current primary server to this server. This operation might result in data loss.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisasterRecoveryConfigurations_FailoverAllowDataLoss.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
